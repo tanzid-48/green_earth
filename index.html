@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Earth</title>   
+    <title>Green Earth</title>
 
- <!-- tailwind and daisy UI -->
-<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- tailwind and daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
-    <main class="container mx-auto text-center">
-        <h2 class="text-[#4ade80] font-semibold text-4xl">Choose Your Trees</h2>
+    <main class="container mx-auto px-8">
+        <h2 class="text-[#4ade80] font-semibold text-4xl text-center mb-8">Choose Your Trees</h2>
+
+        <!-- Categories -->
+        <div class=" grid grid-cols-12 gap-8 ">
+            <div class=" col-span-3 bg-white card card-body shadow-2xl">
+                <h2 class="font-bold text-2xl mb-4">Categories</h2>
+                <button class="btn btn-success w-full mb-4" id="all-trees-btn">All Trees</button>
+                <div id="categories-container" class="space-y-4">
+                    <!-- categories came api -->
+                </div>
+
+            </div>
+
+            <!-- Tree -->
+            <div class="bg-yellow-500 col-span-6">Tree</div>
+
+            <!-- Card -->
+            <div class="bg-green-400 col-span-3">Card</div>
+        </div>
+
     </main>
+
+    <script src="./script.js"></script>
 </body>
+
 </html>
