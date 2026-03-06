@@ -10,6 +10,7 @@ const loadCategories = () => {
 
 const loadingSpinner = document.getElementById('loading-spinner')
 const treeDetailsModal = document.getElementById('tree_details');
+let totalPrice = document.getElementById('total-price');
 const loadTrees = () => {
 
     loadingSpinner.classList.remove("hidden");
@@ -140,22 +141,30 @@ allTreesBtn.addEventListener('click', () => {
 
 });
 
-  const cart = [];
+  let cart = [];
 
  const addToCard = (id,name,price)=>{
-    cart.push({
+
+    const existingItem = cart.find((item) => item.id ===id);
+    if(existingItem){
+        existingItem.quantity +=1
+    }else {
+        cart.push({
         id,
         name,
         price,
         quantity:1
-    });
+        });
+
+    }
     updateCard()
  }
  const cardContainer = document.getElementById('card-container')
- const updateCard = () =>{
+ let updateCard = () =>{
      cardContainer.innerHTML = "";
-     console.log(cart);
+     let total =0 ;
      cart.forEach(item =>{
+       total +=item.price *item.quantity;
         const cartItem = document.createElement("div")
         cartItem.className = "card card-body bg-slate-100"
         cartItem.innerHTML = `
@@ -165,7 +174,7 @@ allTreesBtn.addEventListener('click', () => {
                     <h2>${item.name}</h2>
                     <p>$${item.price} X ${item.quantity}</p>
                 </div>
-                <button class="btn btn-ghost">X</button>
+               <button class="btn btn-ghost" onclick="removeFromCart('${item.id}')">X</button>
             </div>
             <p class="text-right font-semibold text-xl">$${item.price * item.quantity}</p>
         
@@ -173,11 +182,16 @@ allTreesBtn.addEventListener('click', () => {
         `;
         cardContainer.append(cartItem);
 
-     })
+     });
+     totalPrice.innerText = total;
 
  }
+ let removeFromCart =(treeId)=>{
+    const updateCartElement = cart.filter((item) => item.id != treeId);
+    cart =updateCartElement;
+    updateCard()
 
-
+ }
 
 loadCategories();
 loadTrees();
