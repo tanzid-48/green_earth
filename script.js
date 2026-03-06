@@ -88,6 +88,37 @@ const selectCategory = (categoryID,btn) =>{
     btn.classList.add("btn-primary1")
     btn.classList.remove("btn-outline")
 
+     
+    const url = (`https://openapi.programming-hero.com/api/category/${categoryID}`);
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        displayTrees(data.plants);
+    })
+//    all button work
+    const allTreesBtn = document.getElementById('all-trees-btn');
+    allTreesBtn.addEventListener('click', ()=>{
+
+           const allButtons = document.querySelectorAll("#categories-container button, #all-trees-btn");
+    console.log(allButtons);
+   allButtons.forEach(b =>{
+    b.classList.remove("btn-primary1");
+    b.classList.add("btn-outline")
+   });
+
+     allTreesBtn.classList.add("btn-primary1")
+     allTreesBtn.classList.remove("btn-outline")
+
+     loadTrees();
+
+
+
+    })
+
+ 
+
+
+
 }
 
 loadCategories();
