@@ -68,9 +68,26 @@ const displayCategories = (categories) => {
             <button class = "btn btn-outline w-full">${category.category_name}</button>
             `;
 
+                const btn = div.querySelector("button"); 
+        btn.onclick = () => selectCategory(category.id, btn);
+
         categoriesContainer.append(div);
 
     });
+}
+
+const selectCategory = (categoryID,btn) =>{
+    
+    const allButtons = document.querySelectorAll("#categories-container button, #all-trees-btn");
+    console.log(allButtons);
+   allButtons.forEach(b =>{
+    b.classList.remove("btn-primary1");
+    b.classList.add("btn-outline")
+   });
+
+    btn.classList.add("btn-primary1")
+    btn.classList.remove("btn-outline")
+
 }
 
 loadCategories();
