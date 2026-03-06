@@ -18,7 +18,7 @@
 
         <!-- Categories -->
         <div class=" grid grid-cols-12 gap-8 ">
-            <div class=" col-span-3 bg-white card card-body shadow-2xl   ">
+            <div class=" col-span-3 bg-white card card-body shadow-2xl  ">
                 <h2 class="font-bold text-2xl mb-4 ">Categories</h2>
                 <button class="btn btn-primary1 w-full mb-4" id="all-trees-btn">All Trees</button>
                 <div id="categories-container" class="space-y-4 sticky top-10">
@@ -50,9 +50,34 @@
 
 
             <!-- Card -->
-            <div class="bg-white  shadow-2xl col-span-3 p-6">Card</div>
+            <div class="bg-white  shadow-2xl col-span-3 p-6">
+                <h2 class="font-bold text-3xl mb-4">Your Cart</h2>
+
+                <div class="space-y-4">
+
+                   <div id="card-container" class="space-y-4">
+                      <!-- <div class="card card-body bg-slate-100 shadow-xl">
+                        <div class="flex justify-between items-center">
+                            <div class="">
+                                <h2>Name</h2>
+                                <p>$2000 X 10 </p>
+                            </div>
+                            <button class="btn btn-ghost">X</button>
+                        </div>
+                        <p class="text-right font-semibold text-xl">$500</p>
+
+                    </div> -->
+
+                   </div>
+                     <div class="flex justify-between items-center bg-green-50 rounded-lg p-4 my-3 font-bold">
+                        <span>Total:</span>
+                        <span id="tottal-price">$0</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
+    
 
         <!-- Open the modal using ID.showModal() method -->
 

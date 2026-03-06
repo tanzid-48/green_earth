@@ -64,13 +64,13 @@ const displayTrees = (trees) => {
         <img src="${tree.image}" alt="${tree.name}" class="w-full h-40 object-cover rounded-t-2xl" />
     </figure>
     <div class="card-body p-4">
-        <h2 class="card-title text-base" onclick="openTreeModel(${tree.id})">${tree.name}</h2>
+        <h2 class="card-title text-base cursor-pointer hover:text-green-400 transition-colors" onclick="openTreeModel(${tree.id})">${tree.name}</h2>
         <p class="text-sm text-gray-500 line-clamp-2">${tree.description}</p>
         <div class="flex justify-between items-center mt-2">
             <span class="text-xs border border-green-400 text-green-500 rounded-full px-2 py-1">${tree.category}</span>
             <h2 class="font-bold text-[#4ade80]">$${tree.price}</h2>
         </div>
-        <button class="btn btn-success w-full rounded-full mt-2">Add to Cart</button>
+        <button class="btn btn-success w-full rounded-full mt-2" onclick="addToCard(${tree.id},'${tree.name}',${tree.price})">Add to Cart</button>
     </div>
     
 `;
@@ -139,6 +139,45 @@ allTreesBtn.addEventListener('click', () => {
     loadTrees();
 
 });
+
+  const cart = [];
+
+ const addToCard = (id,name,price)=>{
+    cart.push({
+        id,
+        name,
+        price,
+        quantity:1
+    });
+    updateCard()
+ }
+ const cardContainer = document.getElementById('card-container')
+ const updateCard = () =>{
+     cardContainer.innerHTML = "";
+     console.log(cart);
+     cart.forEach(item =>{
+        const cartItem = document.createElement("div")
+        cartItem.className = "card card-body bg-slate-100"
+        cartItem.innerHTML = `
+
+           <div class="flex justify-between items-center">
+                <div>
+                    <h2>${item.name}</h2>
+                    <p>$${item.price} X ${item.quantity}</p>
+                </div>
+                <button class="btn btn-ghost">X</button>
+            </div>
+            <p class="text-right font-semibold text-xl">$${item.price * item.quantity}</p>
+        
+        
+        `;
+        cardContainer.append(cartItem);
+
+     })
+
+ }
+
+
 
 loadCategories();
 loadTrees();
